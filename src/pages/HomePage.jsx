@@ -32,8 +32,47 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <section
+        className="relative text-white overflow-hidden"
+        style={{
+          backgroundImage: `url('/hero.jpg')`,  // 👈 Cambia esto por tu imagen
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Degradado: oscuro a la izquierda, transparente a la derecha */}
+        {/* En mobile: oscuro arriba, semitransparente abajo */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+        linear-gradient(
+          to right,
+          rgba(17, 24, 39, 0.97) 0%,
+          rgba(17, 24, 39, 0.85) 40%,
+          rgba(17, 24, 39, 0.4) 70%,
+          rgba(17, 24, 39, 0.05) 100%
+        )
+      `,
+          }}
+        />
+
+        {/* Versión mobile: degradado vertical en pantallas pequeñas */}
+        <div
+          className="absolute inset-0 sm:hidden"
+          style={{
+            background: `
+        linear-gradient(
+          to bottom,
+          rgba(17, 24, 39, 0.92) 0%,
+          rgba(17, 24, 39, 0.75) 60%,
+          rgba(17, 24, 39, 0.4) 100%
+        )
+      `,
+          }}
+        />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28">
           <div className="max-w-xl">
             <p className="text-brand-400 text-sm font-medium uppercase tracking-widest mb-3">
               Nueva temporada
